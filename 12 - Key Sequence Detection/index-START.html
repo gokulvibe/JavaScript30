@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Key Detection</title>
-  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+    <meta charset="UTF-8">
+    <title>Key Detection</title>
+    <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
 </head>
+
 <body>
-<script>
-</script>
+    <script>
+        const keysArray = [];
+        const secret = "thanos"
+
+        function keyCode(e) {
+            console.log(e.key)
+            keysArray.push(e.key);
+            keysArray.splice(-secret.length - 1, keysArray.length - secret.length)
+
+            if (keysArray.join('').includes(secret)) {
+                console.log('DING DING!');
+                cornify_add();
+            }
+            console.log(keysArray);
+        }
+
+        window.addEventListener('keydown', keyCode);
+    </script>
 </body>
+
 </html>
